@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const display = Fraunces({ subsets: ["latin"], variable: "--f-display" });
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
